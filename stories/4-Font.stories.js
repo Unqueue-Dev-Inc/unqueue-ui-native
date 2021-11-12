@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { storiesOf } from '@storybook/react-native';
-import * as Font from 'expo-font';
-import { Text } from 'react-native';
+import React, { useEffect, useState } from "react";
+import { storiesOf } from "@storybook/react-native";
+import * as Font from "expo-font";
+import { Text } from "react-native";
 
 export default {
-  title: 'Font',
+  title: "Font",
 };
 
 export const CustomFontComponent = () => {
@@ -13,7 +13,7 @@ export const CustomFontComponent = () => {
   useEffect(() => {
     (async () => {
       await Font.loadAsync({
-        'retro-regular': require('../assets/retro-regular.ttf')
+        "retro-regular": require("../assets/retro-regular.ttf"),
       });
       setLoaded(true);
     })();
@@ -23,17 +23,17 @@ export const CustomFontComponent = () => {
     loaded && (
       <Text
         style={{
-          fontFamily: 'retro-regular',
-          backgroundColor: 'transparent',
+          fontFamily: "retro-regular",
+          backgroundColor: "transparent",
           fontSize: 56,
-          color: '#000'
+          color: "#000",
         }}
       >
         Cool new font
       </Text>
     )
   );
-}
+};
 
 // On-Device Register
-storiesOf('Font', module).add('Font', () => (<CustomFontComponent/>));
+storiesOf("Font", module).add("Font", () => <CustomFontComponent />);
