@@ -1,4 +1,7 @@
 {
+  "name": "unqueue-ui-native",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
     "start": "expo start",
     "web": "start-storybook -p 6006",
@@ -6,7 +9,8 @@
     "test:unit": "jest",
     "lint": "eslint",
     "format": "prettier *.{js,tsx} -w",
-    "prepare": "bob build"
+    "prepare": "bob build",
+    "release": "npm run prepare && changeset publish"
   },
   "dependencies": {
     "expo": "~38.0.0",
@@ -21,6 +25,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.9.0",
+    "@changesets/cli": "^2.18.0",
     "@expo/webpack-config": "^0.11.11",
     "@react-native-community/eslint-config": "^2.0.0",
     "@storybook/addon-actions": "~5.2.1",
@@ -55,9 +60,13 @@
     ]
   },
   "main": "lib/commonjs/index.js",
-  "react-native": "index.ts",
+  "react-native": "src/index.ts",
   "module": "lib/module/index.js",
   "types": "lib/typescript/index.d.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": "git://github.com/unqueue-dev-inc/unqueue-ui-web",
   "files": [
     "./",
     "lib",
@@ -65,17 +74,17 @@
     "!**/__fixtures__",
     "!**/__mocks__"
   ],
-  "@react-native-community/bob": {
-    "source": "./",
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ],
+  "react-native-builder-bob": {
+    "source": "src",
     "output": "lib",
     "targets": [
       "commonjs",
       "module",
       "typescript"
     ]
-  },
-  "eslintIgnore": [
-    "node_modules/",
-    "lib/"
-  ]
+  }
 }
